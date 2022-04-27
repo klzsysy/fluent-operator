@@ -99,8 +99,8 @@ func MakeDaemonSet(fb fluentbitv1alpha2.FluentBit, logPath string) appsv1.Daemon
 									MountPath: "/fluent-bit/config",
 								},
 								{
-									Name:      "varlogs",
-									ReadOnly:  true,
+									Name: "varlogs",
+									//ReadOnly:  true,
 									MountPath: "/var/log/",
 								},
 								{

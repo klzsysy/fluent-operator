@@ -20,23 +20,16 @@ spec:
       volumes:
       - name: env
         emptyDir: {}
-      - name: dockersock
-        hostPath:
-          path: /var/run/docker.sock
       initContainers:
       - name: setenv
-        image: 'docker:19.03'
+        image: alpine
         command:
         - /bin/sh
         - '-c'
-        - set -ex;
-          echo CONTAINER_ROOT_DIR=$(docker info -f '{{.DockerRootDir}}' 2> /dev/null) > /fluent-operator/fluent-bit.env
+        - echo /var/log > /fluent-operator/fluent-bit.env
         volumeMounts:
         - name: env
           mountPath: /fluent-operator
-        - name: dockersock
-          readOnly: true
-          mountPath: /var/run/docker.sock
       containers:
       - name: fluent-operator
         image: kubesphere/fluent-operator:latest
