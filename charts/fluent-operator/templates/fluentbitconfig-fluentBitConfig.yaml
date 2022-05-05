@@ -5,6 +5,9 @@ metadata:
   name: fluent-bit-config
   labels:
     app.kubernetes.io/name: fluent-bit
+    {{- range $key, $value := .Values.labels }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
 spec:
   service:
     parsersFile: parsers.conf

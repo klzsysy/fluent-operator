@@ -7,6 +7,9 @@ metadata:
   labels:
     fluentbit.fluent.io/enabled: "true"
     fluentbit.fluent.io/component: logging
+    {{- range $key, $value := .Values.labels }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
 spec:
   matchRegex: (?:kube|service)\.(.*)
   kafka:

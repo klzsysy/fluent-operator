@@ -6,6 +6,9 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     app.kubernetes.io/name: fluent-bit
+    {{- range $key, $value := .Values.labels }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
 spec:
   image: {{ .Values.fluentbit.image.repository }}:{{ .Values.fluentbit.image.tag }}
   {{- if .Values.fluentbit.imagePullSecrets }}

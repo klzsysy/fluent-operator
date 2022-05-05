@@ -29,6 +29,8 @@ operator:
     crio: /var/log
     containerd: /var/log
 
+
+
 fluentbit:
   image:
     repository: "kubesphere/fluent-bit"
@@ -131,7 +133,6 @@ nameOverride: ""
 fullnameOverride: ""
 namespaceOverride: ""
 
-
-
-
-
+# additional labels
+labels:
+  smartx-component: caas-logging

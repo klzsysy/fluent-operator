@@ -4,6 +4,10 @@ kind: ConfigMap
 metadata:
   name: fluent-bit-containerd-config
   namespace: {{ .Release.Namespace }}
+  labels:
+    {{- range $key, $value := .Values.labels }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
 data:
   containerd.lua: |
     function containerd( tag, timestamp, record)

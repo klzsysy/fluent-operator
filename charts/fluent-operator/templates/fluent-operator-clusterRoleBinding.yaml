@@ -4,6 +4,9 @@ metadata:
   labels:
     app.kubernetes.io/component: controller
     app.kubernetes.io/name: fluent-operator
+    {{- range $key, $value := .Values.labels }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
   name: fluent-operator
 roleRef:
   apiGroup: rbac.authorization.k8s.io

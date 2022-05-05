@@ -4,6 +4,10 @@ kind: ConfigMap
 metadata:
   name: fluent-bit-lua
   namespace: {{ .Release.Namespace }}
+  labels:
+    {{- range $key, $value := .Values.labels }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
 data:
   systemd.lua: |
     function add_time(tag, timestamp, record)
