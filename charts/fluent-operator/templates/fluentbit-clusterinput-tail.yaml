@@ -20,6 +20,7 @@ spec:
     refreshIntervalSeconds: 10
     memBufLimit: {{ .Values.fluentbit.input.tail.memBufLimit }}
     skipLongLines: true
-    db: /fluent-bit/tail/pos.db
+    readFromHead: true
+    db: /var/log/containers-tail.db
     dbSync: Normal
 {{- end }}

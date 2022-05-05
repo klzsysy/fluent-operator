@@ -3,21 +3,21 @@
 # Declare variables to be passed into your templates.
 
 #Set this to containerd or crio if you want to collect CRI format logs
-containerRuntime: docker
-Kubernetes: false
+containerRuntime: crio
+Kubernetes: true
 
 operator:
   initcontainer:
-    repository: "docker"
-    tag: "19.03"
+    repository: "alpine"
+    tag: "latest"
   container:
-    repository: "kubesphere/fluent-operator"
+    repository: "smartxworks/fluent-operator"
     tag: "latest"
     # FluentBit operator resources. Usually user needn't to adjust these.
   resources:
     limits:
-      cpu: 100m
-      memory: 30Mi
+      cpu: 500m
+      memory: 300Mi
     requests:
       cpu: 100m
       memory: 20Mi
@@ -60,10 +60,10 @@ fluentbit:
   #You can set enable to true to output logs to the specified location.
   output:
     es:
-      enable: false
-      host: "<Elasticsearch url like elasticsearch-logging-data.kubesphere-logging-system.svc>"
+      enable: true
+      host: elasticsearch-cluster
       port: 9200
-      logstashPrefix: ks-logstash-log
+      logstashPrefix: smartx-logging
 #      path: ""
 #      bufferSize: "4KB"
 #      index: "fluent-bit"

@@ -10,7 +10,7 @@ spec:
   systemd:
     tag: service.{{ .Values.containerRuntime }}
     path: /var/log/journal
-    db: /fluent-bit/tail/docker.db
+    db: /fluent-bit/tail/cri.db
     dbSync: Normal
     systemdFilter:
       - _SYSTEMD_UNIT={{ .Values.containerRuntime }}.service
