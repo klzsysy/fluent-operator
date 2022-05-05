@@ -16,7 +16,9 @@ spec:
       kubeURL: https://kubernetes.default.svc:443
       kubeCAFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
       kubeTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
-      labels: false
+      labels: true
+      k8sLoggingParser: true
+      k8sLoggingExclude: true
       annotations: false
   - nest:
       operation: lift

@@ -67,12 +67,12 @@ fluentbit:
       port: 9200
       logstashPrefix: smartx-logging
 #      path: ""
-#      bufferSize: "4KB"
+      bufferSize: "64KB"
 #      index: "fluent-bit"
 #      httpUser:
 #      httpPassword:
-#      logstashFormat: true
-#      replaceDots: false
+      logstashFormat: true
+      replaceDots: true
 #      enableTLS: false
 #      tls:
 #        verify: On
