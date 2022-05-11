@@ -8,10 +8,11 @@ Kubernetes: true
 
 operator:
   initcontainer:
-    repository: "alpine"
+    repository: "registry.smtx.io/library/alpine"
     tag: "latest"
   container:
-    repository: "smartxworks/fluent-operator"
+#    repository: "smartxworks/fluent-operator"
+    repository: "registry.smtx.io/kubesmart/fluent-operator"
     tag: "latest"
     # FluentBit operator resources. Usually user needn't to adjust these.
   resources:
@@ -19,7 +20,7 @@ operator:
       cpu: 500m
       memory: 300Mi
     requests:
-      cpu: 100m
+      cpu: 20m
       memory: 20Mi
   ## Reference to one or more secrets to be used when pulling images
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
@@ -28,7 +29,6 @@ operator:
   logPath:
     crio: /var/log
     containerd: /var/log
-
 
 
 fluentbit:
