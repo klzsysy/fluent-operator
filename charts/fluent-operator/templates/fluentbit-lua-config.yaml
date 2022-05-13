@@ -28,6 +28,10 @@ data:
       -- new_record["log"] = record["MESSAGE"]
       -- new_record["kubernetes"] = kubernetes
 
+      -- rename field MESSAGE to message
+      record["message"] = record["MESSAGE"]
+      record["MESSAGE"] = nil
+
       record["time"] = t
       record["kubernetes"] = kubernetes
       -- return 1, timestamp, new_record

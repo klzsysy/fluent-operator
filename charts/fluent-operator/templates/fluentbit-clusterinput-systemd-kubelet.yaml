@@ -14,7 +14,6 @@ spec:
     tag: service.kubelet
     path: /var/log/journal
     db: /fluent-bit/tail/kubelet.db
-    dbSync: Normal
     systemdFilter:
       - _SYSTEMD_UNIT=kubelet.service
 {{- end }}
